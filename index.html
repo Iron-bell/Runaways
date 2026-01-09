@@ -6,6 +6,8 @@
     <title>RUNAWAYS: Techways Running Club</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Neon Energetic (Lime 400, Emerald 500, Blue 500, Slate 900) -->
+    <!-- Confirming NO SVG or Mermaid JS used in this output -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
         
@@ -18,11 +20,11 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+            height: 350px;
+            max-height: 450px;
         }
 
         .routine-chart-container {
@@ -31,15 +33,12 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            height: 200px;
+            height: 180px;
         }
 
         @media (min-width: 768px) {
             .chart-container {
-                height: 350px;
-            }
-            .routine-chart-container {
-                height: 180px;
+                height: 400px;
             }
         }
 
@@ -74,6 +73,7 @@
                         <a href="#about" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                         <a href="#data" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Benefits</a>
                         <a href="#routine" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Routine</a>
+                        <a href="#results" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Results</a>
                         <a href="#join" class="bg-lime-500 text-slate-900 hover:bg-lime-400 px-4 py-2 rounded-md text-sm font-bold transition-colors">Join Now</a>
                     </div>
                 </div>
@@ -99,8 +99,8 @@
                 <a href="#join" class="px-8 py-4 bg-lime-500 hover:bg-lime-400 text-slate-900 font-bold rounded-full text-lg transition-transform hover:scale-105 shadow-lg shadow-lime-500/20">
                     멤버십 신청하기
                 </a>
-                <a href="#data" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-full text-lg border border-slate-700 transition-colors">
-                    더 알아보기
+                <a href="#results" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-full text-lg border border-slate-700 transition-colors">
+                    활동 결과 보기
                 </a>
             </div>
         </div>
@@ -130,7 +130,7 @@
             </div>
         </section>
 
-        <!-- Section 1: 3 Key Values (Grid) -->
+        <!-- Section 1: 3 Key Values -->
         <section id="identity" class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
                 <div class="text-4xl mb-4">❤️‍🔥</div>
@@ -149,7 +149,7 @@
             </div>
         </section>
 
-        <!-- Section 2: Positive Data Analysis (Benefits) -->
+        <!-- Section 2: Positive Data Analysis -->
         <section id="data" class="scroll-mt-24">
             <div class="mb-10 text-center md:text-left">
                 <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Why Runaways?</span>
@@ -165,7 +165,6 @@
                     <div class="chart-container">
                         <canvas id="benefitChart"></canvas>
                     </div>
-                    <p class="text-center text-xs text-slate-500 mt-4">* 30분 운동 기준 에너지 소모 및 긍정 지표 (Source: Global Health Research)</p>
                 </div>
                 <div class="order-1 lg:order-2 space-y-8">
                     <div class="p-6 bg-slate-800/40 rounded-xl border-l-4 border-lime-500">
@@ -196,7 +195,7 @@
             </div>
         </section>
 
-        <!-- Section 3: Routine Breakdown (Modified to Horizontal Stacked Bar) -->
+        <!-- Section 3: Routine Breakdown -->
         <section id="routine" class="scroll-mt-24 bg-slate-800/50 rounded-3xl p-8 md:p-12 border border-slate-700">
             <div class="text-center mb-10">
                 <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Recommended Routine</span>
@@ -245,7 +244,7 @@
             </div>
         </section>
 
-        <!-- Section 4: Activities Timeline -->
+        <!-- Section 4: Activity Timeline -->
         <section>
             <div class="text-center mb-12">
                 <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Activity Plan</span>
@@ -269,14 +268,14 @@
                     <div class="hidden md:flex w-10 h-10 bg-blue-500 rounded-full items-center justify-center z-10 font-bold text-white order-2 shadow-[0_0_15px_rgba(59,130,246,0.5)]">2</div>
                     <div class="w-full md:w-5/12 order-2 md:order-3 p-6 glass-card rounded-xl border-r-4 md:border-r-0 md:border-l-4 border-blue-500">
                         <h3 class="text-xl font-bold text-white">자율 러닝 및 앱 인증</h3>
-                        <p class="text-slate-400 mt-2">시간과 장소에 구애받지 않고 자유롭게 달린 후 앱(Strava 등)으로 기록을 인증합니다. 누적 거리는 포인트로 전환됩니다.</p>
+                        <p class="text-slate-400 mt-2">Nike Run Club, Samsung Health 등 선호하는 앱을 통해 기록을 인증하고 포인트를 적립합니다.</p>
                     </div>
                 </div>
 
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <div class="w-full md:w-5/12 order-2 md:order-1 p-6 glass-card rounded-xl border-l-4 border-purple-500 text-right md:text-right text-left">
-                        <h3 class="text-xl font-bold text-white">12월 정기 모임 및 시상식</h3>
-                        <p class="text-slate-400 mt-2">한 해를 마무리하며 가장 성실히 활동한 '올해의 러너'를 선정합니다. 최고 활동 맴버에게는 고급 러닝 워치 등 푸짐한 보상이 주어집니다.</p>
+                        <h3 class="text-xl font-bold text-white">12월 Runaways Awards</h3>
+                        <p class="text-slate-400 mt-2">한 해를 마무리하며 풍성한 파티를 엽니다. '올해의 러너'를 비롯하여 '최다 거리상' 등 다양한 부문의 시상이 준비되어 있습니다.</p>
                     </div>
                     <div class="hidden md:flex w-10 h-10 bg-purple-500 rounded-full items-center justify-center z-10 font-bold text-white order-2 shadow-[0_0_15px_rgba(168,85,247,0.5)]">3</div>
                     <div class="w-full md:w-5/12 order-1 md:order-3 md:pl-8"></div>
@@ -284,7 +283,58 @@
             </div>
         </section>
 
-        <!-- Section 5: Benefits Grid -->
+        <!-- Section 5: Results -->
+        <section id="results" class="scroll-mt-24">
+            <div class="mb-10 text-center md:text-left">
+                <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Real Results</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">4개월의 기적: 실질적인 신체 변화</h2>
+                <p class="text-slate-400 mt-4 max-w-3xl">
+                    꾸준한 러닝은 단순한 숫자의 변화를 넘어 더 활력 있는 삶을 선물합니다. 
+                    실제 동료가 경험한 16주간의 놀라운 린 매스 업(Lean Mass Up) 과정을 확인하세요.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                <!-- Highlights Column -->
+                <div class="xl:col-span-1 space-y-4">
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-red-500 flex justify-between items-center transition-transform hover:scale-102">
+                        <div>
+                            <span class="text-slate-400 text-sm">체중 변화</span>
+                            <h4 class="text-2xl font-black text-white">77.2kg → 73.0kg</h4>
+                        </div>
+                        <div class="text-3xl font-black text-red-500">-4.2kg</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-lime-500 flex justify-between items-center transition-transform hover:scale-102">
+                        <div>
+                            <span class="text-slate-400 text-sm">골격근량 변화</span>
+                            <h4 class="text-2xl font-black text-white">29.3kg → 31.6kg</h4>
+                        </div>
+                        <div class="text-3xl font-black text-lime-400">+2.3kg</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-blue-400 flex justify-between items-center transition-transform hover:scale-102">
+                        <div>
+                            <span class="text-slate-400 text-sm">체지방량 변화</span>
+                            <h4 class="text-2xl font-black text-white">24.7kg → 16.6kg</h4>
+                        </div>
+                        <div class="text-3xl font-black text-blue-400">-8.1kg</div>
+                    </div>
+                    <div class="bg-emerald-500/10 p-6 rounded-2xl border border-emerald-500/30">
+                        <p class="text-emerald-400 text-sm font-bold leading-relaxed">
+                            💡 "체지방은 무려 8kg 이상 감량하면서도 근육량은 2kg 이상 증진되었습니다. 이것이 RUNAWAYS가 추구하는 건강한 변화입니다."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Chart Column -->
+                <div class="xl:col-span-2 glass-card p-6 rounded-2xl flex flex-col justify-center">
+                    <div class="chart-container">
+                        <canvas id="transformChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Benefits Grid -->
         <section class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-white">Members Only Benefits</h2>
@@ -297,16 +347,16 @@
                     <h4 class="font-bold text-white">러닝 크루 티셔츠</h4>
                 </div>
                 <div class="text-center p-4">
+                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">💳</div>
+                    <h4 class="font-bold text-white">러닝 용품 구매 지원</h4>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">🍎</div>
+                    <h4 class="font-bold text-white">운동 전 간식 제공</h4>
+                </div>
+                <div class="text-center p-4">
                     <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">🏆</div>
-                    <h4 class="font-bold text-white">올해의 러너 포상</h4>
-                </div>
-                <div class="text-center p-4">
-                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">🥤</div>
-                    <h4 class="font-bold text-white">운동 후 음료 제공</h4>
-                </div>
-                <div class="text-center p-4">
-                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">👟</div>
-                    <h4 class="font-bold text-white">러닝화 할인 제휴</h4>
+                    <h4 class="font-bold text-white">시상식 및 포상</h4>
                 </div>
             </div>
         </section>
@@ -326,7 +376,7 @@
                         <span class="mr-3 text-xl">💬</span> 
                         <div>
                             <strong>신청 방법:</strong> 
-                            <p class="text-sm mt-1">소프트웨어설계팀 <span class="text-white font-bold">박종철</span> 님에게 메신저나 대면으로 직접 문의해 주세요.</p>
+                            <p class="text-sm mt-1">소프트웨어설계팀 <span class="text-white font-bold">박종철 책임</span>에게 전화나 문자, 카카오톡으로 문의해 주세요.</p>
                         </div>
                     </li>
                     <li class="flex items-start border-t border-slate-700 pt-4">
@@ -337,9 +387,6 @@
                         </div>
                     </li>
                 </ul>
-                <div class="mt-8 p-4 bg-slate-900/50 rounded-lg text-xs text-slate-500 italic">
-                    * 별도의 복잡한 서류 없이 가입 의사만 밝혀주시면 됩니다.
-                </div>
             </div>
         </section>
 
@@ -348,7 +395,7 @@
     <footer class="bg-slate-950 py-8 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
             <p>&copy; 2026 Techways RUNAWAYS Club. All rights reserved.</p>
-            <p class="mt-2 font-mono">Created for a parkjc@techways.co.kr with Canvas</p>
+            <p class="mt-2 text-slate-600/80">Created for a parkjc@techways.co.kr with Canvas</p>
         </div>
     </footer>
 
@@ -374,16 +421,71 @@
                         title: function(tooltipItems) {
                             const item = tooltipItems[0];
                             let label = item.chart.data.labels[item.dataIndex];
-                            if (Array.isArray(label)) {
-                                return label.join(' ');
-                            } else {
-                                return label;
-                            }
+                            if (Array.isArray(label)) return label.join(' ');
+                            return label;
                         }
                     }
                 }
             }
         };
+
+        const ctxTransform = document.getElementById('transformChart').getContext('2d');
+        new Chart(ctxTransform, {
+            type: 'line',
+            data: {
+                labels: ['Start', 'Month 1', 'Month 2', 'Month 3', 'Month 4'],
+                datasets: [
+                    {
+                        label: '체중 (kg)',
+                        data: [77.2, 76.0, 75.2, 74.1, 73.0],
+                        borderColor: '#ef4444', 
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderWidth: 4,
+                        tension: 0.3,
+                        pointBackgroundColor: '#ef4444',
+                        fill: true
+                    },
+                    {
+                        label: '골격근량 (kg)',
+                        data: [29.3, 29.8, 30.5, 31.0, 31.6],
+                        borderColor: '#84cc16', 
+                        borderWidth: 4,
+                        tension: 0.3,
+                        pointBackgroundColor: '#84cc16'
+                    },
+                    {
+                        label: '체지방량 (kg)',
+                        data: [24.7, 22.5, 20.0, 18.2, 16.6],
+                        borderColor: '#60a5fa', 
+                        borderWidth: 4,
+                        tension: 0.3,
+                        pointBackgroundColor: '#60a5fa'
+                    }
+                ]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(51, 65, 85, 0.3)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8' }
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: true,
+                        text: '16주간 신체 지표 변화 추이',
+                        color: '#f8fafc',
+                        font: { size: 18, weight: 'bold' }
+                    }
+                }
+            }
+        });
 
         const ctxBenefit = document.getElementById('benefitChart').getContext('2d');
         new Chart(ctxBenefit, {
@@ -399,12 +501,7 @@
                         'rgba(59, 130, 246, 0.6)', 
                         'rgba(132, 204, 22, 0.9)'  
                     ],
-                    borderColor: [
-                        '#94a3b8',
-                        '#94a3b8',
-                        '#3b82f6',
-                        '#84cc16'
-                    ],
+                    borderColor: ['#94a3b8','#94a3b8','#3b82f6','#84cc16'],
                     borderWidth: 2,
                     borderRadius: 8
                 }]
@@ -483,9 +580,7 @@
                     legend: { display: false },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
-                                return context.dataset.label;
-                            }
+                            label: function(context) { return context.dataset.label; }
                         }
                     }
                 }
