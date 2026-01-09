@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUNAWAYS: Techways Running Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        .routine-chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 200px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+            .routine-chart-container {
+                height: 180px;
+            }
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(132, 204, 22, 0.5);
+        }
+        
+        .runaway-gradient {
+            background: linear-gradient(135deg, #84cc16 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-lime-500 selection:text-slate-900">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-black text-lime-400 tracking-tighter">RUN<span class="text-white">AWAYS</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#data" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Benefits</a>
+                        <a href="#routine" class="hover:text-lime-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Routine</a>
+                        <a href="#join" class="bg-lime-500 text-slate-900 hover:bg-lime-400 px-4 py-2 rounded-md text-sm font-bold transition-colors">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-slate-900 pt-16 pb-32">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552674605-5d226a5be314?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-20"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <h1 class="text-5xl md:text-8xl font-black text-white mb-6 tracking-tight">
+                RUN <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-500 neon-text">AWAY</span>
+                <br />FROM STRESS
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mb-10">
+                Techways 사내 러닝 동아리 <strong>RUNAWAYS</strong>와 함께<br>
+                업무의 압박에서 벗어나 건강한 에너지를 채우세요.
+            </p>
+            <div class="flex gap-4">
+                <a href="#join" class="px-8 py-4 bg-lime-500 hover:bg-lime-400 text-slate-900 font-bold rounded-full text-lg transition-transform hover:scale-105 shadow-lg shadow-lime-500/20">
+                    멤버십 신청하기
+                </a>
+                <a href="#data" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-full text-lg border border-slate-700 transition-colors">
+                    더 알아보기
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10 space-y-24 pb-20">
+
+        <!-- Section: Brand Meaning -->
+        <section id="about" class="scroll-mt-24">
+            <div class="glass-card p-10 md:p-16 rounded-3xl border-lime-500/30 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                    <span class="text-9xl font-black">?</span>
+                </div>
+                <span class="text-lime-400 font-bold tracking-widest uppercase text-sm mb-4 block underline decoration-lime-500/50 underline-offset-8">Brand Story</span>
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-8">What is <span class="runaway-gradient">RUNAWAYS</span>?</h2>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <p class="text-xl md:text-2xl text-slate-200 leading-relaxed font-light">
+                        "복잡한 업무와 스트레스에서 잠시 <span class="text-lime-400 font-bold">'도망쳐(Run away)'</span>,<br class="hidden md:block"> 
+                        나만의 건강과 즐거움을 향해 <span class="text-emerald-400 font-bold">'달려가는 사람들(Runners)'</span>"
+                    </p>
+                    <div class="h-1 w-20 bg-lime-500 mx-auto rounded-full"></div>
+                    <p class="text-slate-400 text-lg">
+                        RUNAWAYS는 단순히 달리는 모임을 넘어, <br class="md:hidden">
+                        테크웨이즈 임직원들의 <strong>정신적 해방(Mental Freedom)</strong>과 <strong>신체적 활력</strong>을 추구하는 커뮤니티입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: 3 Key Values (Grid) -->
+        <section id="identity" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                <div class="text-4xl mb-4">❤️‍🔥</div>
+                <h3 class="text-xl font-bold text-white mb-2">Health First</h3>
+                <p class="text-slate-400">떨어지는 체력, 늘어가는 뱃살. 러닝은 가장 효율적인 유산소 운동입니다.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-lime-500/30 shadow-[0_0_20px_rgba(132,204,22,0.1)]">
+                <div class="text-4xl mb-4">🧠</div>
+                <h3 class="text-xl font-bold text-white mb-2">Mental Detox</h3>
+                <p class="text-slate-400">복잡한 일들은 잊으세요. 달리는 순간만큼은 오직 호흡에만 집중합니다.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                <div class="text-4xl mb-4">🤝</div>
+                <h3 class="text-xl font-bold text-white mb-2">Network</h3>
+                <p class="text-slate-400">타 부서 동료들과 함께 땀 흘리며 자연스럽게 소통의 장을 엽니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Positive Data Analysis (Benefits) -->
+        <section id="data" class="scroll-mt-24">
+            <div class="mb-10 text-center md:text-left">
+                <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Why Runaways?</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">러닝이 가져오는 기적적인 변화</h2>
+                <p class="text-slate-400 mt-4 max-w-3xl">
+                    바쁜 Techways인들에게 가장 필요한 것은 **'최단 시간 최대 효과'**입니다. 
+                    러닝은 짧은 시간 안에 체지방을 연소시키고, 뇌에 신선한 산소를 공급하여 창의성을 일깨우는 최고의 도구입니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 glass-card p-6 rounded-2xl border-lime-500/20 shadow-xl">
+                    <div class="chart-container">
+                        <canvas id="benefitChart"></canvas>
+                    </div>
+                    <p class="text-center text-xs text-slate-500 mt-4">* 30분 운동 기준 에너지 소모 및 긍정 지표 (Source: Global Health Research)</p>
+                </div>
+                <div class="order-1 lg:order-2 space-y-8">
+                    <div class="p-6 bg-slate-800/40 rounded-xl border-l-4 border-lime-500">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-3">⚡</span>
+                            <h4 class="text-xl font-bold text-white">압도적인 칼로리 소모</h4>
+                        </div>
+                        <p class="text-slate-400">걷기보다 2.5배, 요가보다 3배 높은 칼로리 연소 효율을 자랑합니다. 30분의 러닝으로 강력한 '애프터번(Afterburn)' 효과를 경험하세요.</p>
+                    </div>
+                    <div class="p-6 bg-slate-800/40 rounded-xl border-l-4 border-emerald-400">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-3">🌈</span>
+                            <h4 class="text-xl font-bold text-white">천연 우울증 치료제, 엔도르핀</h4>
+                        </div>
+                        <p class="text-slate-400">달리는 도중 분비되는 엔도르핀과 도파민은 업무 스트레스를 즉각적으로 해소하고, 자존감을 높여 업무 몰입도를 150% 향상시킵니다.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="text-center p-4 bg-slate-800/60 rounded-lg">
+                            <div class="text-3xl font-black text-lime-400 mb-1">450+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest">Kcal / 45min</div>
+                        </div>
+                        <div class="text-center p-4 bg-slate-800/60 rounded-lg">
+                            <div class="text-3xl font-black text-emerald-400 mb-1">-28%</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest">Stress Level</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Routine Breakdown (Modified to Horizontal Stacked Bar) -->
+        <section id="routine" class="scroll-mt-24 bg-slate-800/50 rounded-3xl p-8 md:p-12 border border-slate-700">
+            <div class="text-center mb-10">
+                <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Recommended Routine</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">1시간의 기적</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                    출근 전이나 퇴근 후 딱 1시간만 투자하세요. 부상을 방지하고 운동 효과를 극대화하는 
+                    RUNAWAYS만의 루틴을 제안합니다.
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center">
+                    <div class="routine-chart-container">
+                        <canvas id="routineBarChart"></canvas>
+                    </div>
+                    <div class="mt-4 flex flex-wrap justify-center gap-6">
+                        <div class="flex items-center text-sm text-slate-300"><span class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span> Warm-up (10분)</div>
+                        <div class="flex items-center text-sm text-slate-300"><span class="w-3 h-3 bg-lime-500 rounded-full mr-2"></span> Main Run (40분)</div>
+                        <div class="flex items-center text-sm text-slate-300"><span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span> Cool Down (10분)</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="flex items-center p-4 bg-slate-800/60 rounded-xl border-l-4 border-yellow-400">
+                        <span class="text-2xl mr-4">🧘</span>
+                        <div>
+                            <strong class="text-white block">Warm-up</strong>
+                            <span class="text-slate-400 text-sm">동적 스트레칭 (10분)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-slate-800/60 rounded-xl border-l-4 border-lime-500">
+                        <span class="text-2xl mr-4">🏃</span>
+                        <div>
+                            <strong class="text-white block">Main Run</strong>
+                            <span class="text-slate-400 text-sm">페이스 조절 (40분)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-slate-800/60 rounded-xl border-l-4 border-blue-500">
+                        <span class="text-2xl mr-4">🧊</span>
+                        <div>
+                            <strong class="text-white block">Cool Down</strong>
+                            <span class="text-slate-400 text-sm">정적 스트레칭 (10분)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Activities Timeline -->
+        <section>
+            <div class="text-center mb-12">
+                <span class="text-lime-400 font-bold tracking-wider uppercase text-sm">Activity Plan</span>
+                <h2 class="text-3xl font-bold text-white mt-2">우리는 이렇게 달립니다</h2>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-slate-700 hidden md:block"></div>
+                
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12">
+                    <div class="w-full md:w-5/12 order-2 md:order-1 p-6 glass-card rounded-xl border-l-4 border-lime-500 text-right md:text-right text-left">
+                        <h3 class="text-xl font-bold text-white">주 1회 정기 러닝</h3>
+                        <p class="text-slate-400 mt-2">매주 목요일 저녁, 테크웨이즈 동료들과 함께 정해진 코스를 달립니다. 페이스 메이커가 초보자의 완주를 돕습니다.</p>
+                    </div>
+                    <div class="hidden md:flex w-10 h-10 bg-lime-500 rounded-full items-center justify-center z-10 font-bold text-slate-900 order-2 shadow-[0_0_15px_rgba(132,204,22,0.5)]">1</div>
+                    <div class="w-full md:w-5/12 order-1 md:order-3 md:pl-8"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12">
+                    <div class="w-full md:w-5/12 order-1 md:order-1 md:pr-8"></div>
+                    <div class="hidden md:flex w-10 h-10 bg-blue-500 rounded-full items-center justify-center z-10 font-bold text-white order-2 shadow-[0_0_15px_rgba(59,130,246,0.5)]">2</div>
+                    <div class="w-full md:w-5/12 order-2 md:order-3 p-6 glass-card rounded-xl border-r-4 md:border-r-0 md:border-l-4 border-blue-500">
+                        <h3 class="text-xl font-bold text-white">자율 러닝 및 앱 인증</h3>
+                        <p class="text-slate-400 mt-2">시간과 장소에 구애받지 않고 자유롭게 달린 후 앱(Strava 등)으로 기록을 인증합니다. 누적 거리는 포인트로 전환됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="w-full md:w-5/12 order-2 md:order-1 p-6 glass-card rounded-xl border-l-4 border-purple-500 text-right md:text-right text-left">
+                        <h3 class="text-xl font-bold text-white">12월 정기 모임 및 시상식</h3>
+                        <p class="text-slate-400 mt-2">한 해를 마무리하며 가장 성실히 활동한 '올해의 러너'를 선정합니다. 최고 활동 맴버에게는 고급 러닝 워치 등 푸짐한 보상이 주어집니다.</p>
+                    </div>
+                    <div class="hidden md:flex w-10 h-10 bg-purple-500 rounded-full items-center justify-center z-10 font-bold text-white order-2 shadow-[0_0_15px_rgba(168,85,247,0.5)]">3</div>
+                    <div class="w-full md:w-5/12 order-1 md:order-3 md:pl-8"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Benefits Grid -->
+        <section class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white">Members Only Benefits</h2>
+                <p class="text-slate-400 mt-2">RUNAWAYS 멤버가 되시면 누릴 수 있는 특별한 혜택</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="text-center p-4">
+                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">👕</div>
+                    <h4 class="font-bold text-white">러닝 크루 티셔츠</h4>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">🏆</div>
+                    <h4 class="font-bold text-white">올해의 러너 포상</h4>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">🥤</div>
+                    <h4 class="font-bold text-white">운동 후 음료 제공</h4>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-5xl mb-4 bg-slate-700 w-20 h-20 mx-auto rounded-full flex items-center justify-center">👟</div>
+                    <h4 class="font-bold text-white">러닝화 할인 제휴</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="join" class="text-center py-16">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">READY TO RUN?</h2>
+            <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                혼자 가면 빨리 가지만, 함께 가면 멀리 갑니다.<br>
+                지금 바로 RUNAWAYS의 멤버가 되어주세요.
+            </p>
+            
+            <div class="bg-slate-800 max-w-md mx-auto rounded-xl p-6 border border-slate-700 shadow-2xl">
+                <h3 class="text-lg font-bold text-lime-400 mb-4">가입 신청 및 문의</h3>
+                <ul class="text-left space-y-4 text-slate-300">
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">💬</span> 
+                        <div>
+                            <strong>신청 방법:</strong> 
+                            <p class="text-sm mt-1">소프트웨어설계팀 <span class="text-white font-bold">박종철</span> 님에게 메신저나 대면으로 직접 문의해 주세요.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start border-t border-slate-700 pt-4">
+                        <span class="mr-3 text-xl">📅</span> 
+                        <div>
+                            <strong>모집 기간:</strong> 
+                            <p class="text-white font-bold">상시 모집 (언제나 환영합니다!)</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mt-8 p-4 bg-slate-900/50 rounded-lg text-xs text-slate-500 italic">
+                    * 별도의 복잡한 서류 없이 가입 의사만 밝혀주시면 됩니다.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 py-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2026 Techways RUNAWAYS Club. All rights reserved.</p>
+            <p class="mt-2 font-mono">Created for a parkjc@techways.co.kr with Canvas</p>
+        </div>
+    </footer>
+
+    <script>
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#94a3b8', 
+                        font: { family: "'Noto Sans KR', sans-serif" }
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    titleColor: '#fff',
+                    bodyColor: '#cbd5e1',
+                    borderColor: '#334155',
+                    borderWidth: 1,
+                    padding: 10,
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const ctxBenefit = document.getElementById('benefitChart').getContext('2d');
+        new Chart(ctxBenefit, {
+            type: 'bar',
+            data: {
+                labels: ['가벼운 걷기', '요가/필라테스', '수영', '러닝 (Running)'],
+                datasets: [{
+                    label: '30분당 칼로리 소모량 (kcal)',
+                    data: [120, 150, 250, 420],
+                    backgroundColor: [
+                        'rgba(148, 163, 184, 0.4)',
+                        'rgba(148, 163, 184, 0.4)',
+                        'rgba(59, 130, 246, 0.6)', 
+                        'rgba(132, 204, 22, 0.9)'  
+                    ],
+                    borderColor: [
+                        '#94a3b8',
+                        '#94a3b8',
+                        '#3b82f6',
+                        '#84cc16'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(51, 65, 85, 0.3)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#f8fafc', font: { weight: 'bold' } }
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: '운동 종류별 효율성 비교',
+                        color: '#f8fafc',
+                        font: { size: 18, weight: 'bold' }
+                    }
+                }
+            }
+        });
+
+        const ctxRoutine = document.getElementById('routineBarChart').getContext('2d');
+        new Chart(ctxRoutine, {
+            type: 'bar',
+            data: {
+                labels: ['러닝 루틴'],
+                datasets: [
+                    {
+                        label: 'Warm-up (10분)',
+                        data: [10],
+                        backgroundColor: '#fbbf24',
+                        borderRadius: { topLeft: 10, bottomLeft: 10 }
+                    },
+                    {
+                        label: 'Main Run (40분)',
+                        data: [40],
+                        backgroundColor: '#84cc16'
+                    },
+                    {
+                        label: 'Cool Down (10분)',
+                        data: [10],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: { topRight: 10, bottomRight: 10 }
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        display: true,
+                        grid: { display: false },
+                        ticks: { 
+                            color: '#94a3b8',
+                            callback: function(value) { return value + '분'; }
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        display: false
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
